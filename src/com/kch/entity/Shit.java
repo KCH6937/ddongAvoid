@@ -1,13 +1,17 @@
 package com.kch.entity;
 
 import com.kch.entity.abstractionInterface.DirectionKey;
+import com.kch.entity.abstractionInterface.ImageProvider;
+import com.kch.storage.FileStorage;
+
+import java.awt.image.BufferedImage;
 
 //  똥 클래스
 /**
  * @author 이상훈
  * @since 2019-10-31
  * */
-public class Shit implements DirectionKey {
+public class Shit implements DirectionKey, ImageProvider {
 
     private int posX;                               //변수 생성
     private int posY;
@@ -35,5 +39,10 @@ public class Shit implements DirectionKey {
     @Override
     public void right() {
 
+    }
+
+    @Override
+    public BufferedImage getImage() {
+        return FileStorage.bufferedImageMap.get("똥");
     }
 }
