@@ -7,7 +7,10 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-
+/**
+ * @author 이상훈
+ * @since 2019-10-31
+ * */
 //  gui 클래스
 public class Gui extends JFrame {
     Graphics2D graphicDraw;
@@ -35,7 +38,7 @@ public class Gui extends JFrame {
             }
 
             @Override
-            public void keyPressed(KeyEvent e) {            //눌렀을때
+            public void keyPressed(KeyEvent e) {            //키보드를 눌렀을때
                 System.out.println(e.getKeyCode());         // 37 - x좌표 변경 / 39 일때 x 좌표 변경
                 if (e.getKeyCode() == 37){                  // player class에 left() 와 right() 호출
                     player.left();                          //left() - 누를때마다 -1 / 누를때마다 +1
@@ -48,7 +51,7 @@ public class Gui extends JFrame {
             }
 
             @Override
-            public void keyReleased(KeyEvent e) {           //누르고있을때
+            public void keyReleased(KeyEvent e) {           //키보드를 누르고있을때
                 System.out.println(e.getKeyCode());
             }
         });

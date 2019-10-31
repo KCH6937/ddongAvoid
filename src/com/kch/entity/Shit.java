@@ -17,7 +17,7 @@ public class Shit implements DirectionKey, ImageProvider {
     private int posY;
     private float speed;
 
-   public Shit(int posX, int posY, float speed ){           //플레이어와 마찬가지로 생성
+   public Shit(int posX, int posY, float speed ){           //생성자
        this.posX = posX;
        this.posY = posY;
        this.speed = speed;
