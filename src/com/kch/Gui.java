@@ -8,8 +8,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 /**
- * @author 이상훈
+ * @author 이상훈(kebin0613@github.com)
  * @since 2019-10-31
+ *
  * */
 //  gui 클래스
 public class Gui extends JFrame {

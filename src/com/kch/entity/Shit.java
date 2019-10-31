@@ -24,14 +24,14 @@ public class Shit implements DirectionKey, ImageProvider {
    }
 
    /**
-    * 똥의 y값을 1 증가시키는 메소드임 개꿀 ㅈㅅ
+    * 똥의 y값을 1 증가시키는 메소드임 개꿀><
     * */
     public void falling() {
         posY = posY++;
                                     //떨어지는 함수 위에서 1씩 증가시킴(0~~850)
     }                              //x y 그래프라고 생각하면 안됨! 왼쪽상단 모서리가  "0"
 
-    @Override                       //이거 아래로 무시하면됨(그렇다고 지우면 안됨)
+    @Override                       // left, right 는 필요없으나  DirectionKey 를 쓸때 써야함(그렇다고 지우면 안됨)
     public void left() {
 
     }
@@ -42,7 +42,7 @@ public class Shit implements DirectionKey, ImageProvider {
     }
 
     @Override
-    public BufferedImage getImage() {
-        return FileStorage.bufferedImageMap.get("똥");
+    public BufferedImage getImage() {                   //BufferedImage 가 리턴형 임 getImage 함수 호출
+        return FileStorage.bufferedImageMap.get("똥");       //리턴값 FileStorage(파일저장소)의 똥이미지
     }
 }

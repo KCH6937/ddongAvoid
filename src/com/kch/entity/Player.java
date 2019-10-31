@@ -33,7 +33,7 @@ public class Player implements DirectionKey, ImageProvider {     //강채바리 
     }
 
     @Override
-    public void left() {setPosX(getPosX() - 1); }       //굿 b - lsh
+    public void left() {setPosX(getPosX() - 1); }       //굿 b - 바로 호출 때림 -lsh-
 
     @Override
     public void right() {
