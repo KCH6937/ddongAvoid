@@ -18,7 +18,7 @@ public class FileStorage {
         File file2 = new File(System.getProperty("user.dir") + "/resource/man.png");
 
         try {
-           BufferedImage ddd = ImageIO.read(file).getSubimage(0,0,32,32);
+           BufferedImage ddd = ImageIO.read(file).getSubimage(0, 0, 32, 32);
            BufferedImage man = ImageIO.read(file2).getSubimage(0,0,32,32);
 
            bufferedImageMap.put("똥",ddd);
