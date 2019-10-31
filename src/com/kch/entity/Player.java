@@ -1,10 +1,14 @@
 package com.kch.entity;
 
 import com.kch.entity.abstractionInterface.DirectionKey;
+import com.kch.entity.abstractionInterface.ImageProvider;
+import com.kch.storage.FileStorage;
+
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 
 // 플레이어(사람) 클래스
-public class Player implements DirectionKey {     //강채바리 이거 하는거 아니란다 ㅗ extends JFrame 지웠다
+public class Player implements DirectionKey, ImageProvider {     //강채바리 이거 하는거 아니란다 ㅗ extends JFrame 지웠다
     private int posX;
     private int posY;       // 나중에 final 써서 위치값 고정
     private float speed;
@@ -40,4 +44,8 @@ public class Player implements DirectionKey {     //강채바리 이거 하는�
         setStatus(status);
     }
 
+    @Override
+    public BufferedImage getImage() {
+        return FileStorage.bufferedImageMap.get("사람");
+    }
 }
