@@ -29,17 +29,15 @@ public class Player extends JFrame implements DirectionKey {
     }
 
     @Override
-    public void left() {
-        setPosY(getPosX() - 1);
-    }
+    public void left() {setPosX(getPosX() - 1); }
 
     @Override
     public void right() {
         setPosX(getPosX() + 1);
     }
 
-    public void deadStatus(int status) {    // 죽었을때 상태, 기능 추가하세욥
-        setStatus(false);
+    public void deadStatus(boolean status) {    // 죽었을때 상태, 기능 추가하세욥
+        setStatus(status);
     }
 
 }
