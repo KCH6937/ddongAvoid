@@ -8,12 +8,12 @@ import javax.swing.*;
 import java.awt.image.BufferedImage;
 
 // 플레이어(사람) 클래스
-public class Player implements DirectionKey, ImageProvider {     //강채바리 이거 하는거 아니란다 ㅗ extends JFrame 지웠다
+public class Player implements DirectionKey, ImageProvider {
     private int posX;
-    private int posY;       // 나중에 final 써서 위치값 고정
+    private int posY;       // 나중에 final 써서 위치값 고정해주세요
     private float speed;
     private float gasokdo;
-    private boolean status; // false 이면 죽음, true 이면 살아있음
+    private boolean status; // false 이면 죽음, true 이면 살아있습니다.
 
     public Player(int posX, int posY, float speed, float gasokdo) {
         this.posX = posX;
@@ -33,11 +33,11 @@ public class Player implements DirectionKey, ImageProvider {     //강채바리 
     }
 
     @Override
-    public void left() {setPosX(getPosX() - 1); }       //굿 b - lsh
+    public void left() {setPosX(getPosX() - 5); }       //굿 b - lsh
 
     @Override
     public void right() {
-        setPosX(getPosX() + 1);
+        setPosX(getPosX() + 5);
     }
 
     public void deadStatus(boolean status) {    // 죽었을때 상태, 기능 추가하세욥
@@ -47,5 +47,5 @@ public class Player implements DirectionKey, ImageProvider {     //강채바리 
     @Override
     public BufferedImage getImage() {
         return FileStorage.bufferedImageMap.get("사람");
-    }
+    }   // 이미지 가져오는 메서드입니다.
 }
