@@ -29,7 +29,7 @@ public class Player implements DirectionKey {     //강채바리 이거 하는�
     }
 
     @Override
-    public void left() {setPosX(getPosX() - 1); }       //굿 b
+    public void left() {setPosX(getPosX() - 1); }       //굿 b - lsh
 
     @Override
     public void right() {
