@@ -1,11 +1,11 @@
 package com.kch;
 //  똥 클래스
-public class Shit {
 
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 
-    public Shit() {
+public class Shit{
 
-
-    }
 
 }
