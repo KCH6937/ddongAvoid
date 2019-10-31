@@ -1,6 +1,7 @@
 package com.kch;
 // Main class
 
+import com.kch.entity.Shit;
 import com.kch.storage.FileStorage;
 
 import java.io.File;
@@ -13,7 +14,7 @@ public class Main {
         FileStorage.load();
         Gui gui = new Gui();
 
-
+        //Shit s = new Shit(SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f);
 
     }
 }

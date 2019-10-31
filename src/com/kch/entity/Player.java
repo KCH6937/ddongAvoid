@@ -4,7 +4,7 @@ import com.kch.entity.abstractionInterface.DirectionKey;
 import javax.swing.*;
 
 // 플레이어(사람) 클래스
-public class Player extends JFrame implements DirectionKey {
+public class Player implements DirectionKey {     //강채바리 이거 하는거 아니란다 ㅗ extends JFrame 지웠다
     private int posX;
     private int posY;       // 나중에 final 써서 위치값 고정
     private float speed;
@@ -29,7 +29,7 @@ public class Player extends JFrame implements DirectionKey {
     }
 
     @Override
-    public void left() {setPosX(getPosX() - 1); }
+    public void left() {setPosX(getPosX() - 1); }       //굿 b
 
     @Override
     public void right() {
