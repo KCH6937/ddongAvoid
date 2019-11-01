@@ -41,8 +41,12 @@ public class Player implements DirectionKey, ImageProvider {
 
 
 
+
     @Override
     public void right() { setPosX(getPosX() + 5); }
+
+
+
 
     public void deadStatus(boolean status) {    // 죽었을때 상태, 기능 추가하세욥
         setStatus(status);
