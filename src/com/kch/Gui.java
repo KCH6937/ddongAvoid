@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
 /**
  * @author 이상훈(kebin0613@github.com)
  * @since 2019-10-31
@@ -16,10 +19,13 @@ import java.awt.image.BufferedImage;
 public class Gui extends JFrame {
     Graphics2D graphicDraw;     //
 
+    private int score = 0;
+    private Font font = new Font("돋움", Font.PLAIN, 20);
+
 
     Shit shit = new Shit(Main.SCREEN_HEIGHT/2,650,0);       //확실x 건들지마셈
 
-     Player player = new Player(Main.SCREEN_WIDTH/2,810,0,0);    // 스피드, 가속도는 나중에 추가설정해주세요.
+    Player player = new Player(Main.SCREEN_WIDTH/2,810,0,0);    // 스피드, 가속도는 나중에 추가설정해주세요.
 
     public Gui() {
         setTitle("똥피하기");       //게임 이름
@@ -79,6 +85,45 @@ public class Gui extends JFrame {
                 e.printStackTrace();
             }
         }
+    }
+
+    public int getScore(){
+        return score;
+    }
+
+    public void setScore(int count){
+        score = count;
+    }
+
+    public void saveScore(){ //파일세이브
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+
+        try{
+            fw = new FileWriter("Score.txt");
+            bw = new BufferedWriter(fw);
+            bw.write(score);
+        }catch(Exception e){
+            e.getStackTrace();
+        }finally {
+            try{
+                fw.close();
+                bw.close();
+            }catch(Exception e){
+                e.getStackTrace();
+            }
+        }
+    }
+    public void fetchScore(){
+
+    }
+
+    public void scoreRender(){
+        JLabel jLabel = new JLabel("점수 : " + score);
+        jLabel.setFont(font);
+        add(jLabel);
+        setVisible(true);
+        repaint();
     }
 
 }

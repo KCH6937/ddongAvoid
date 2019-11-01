@@ -20,7 +20,7 @@ public class Main {
 
         long game = System.currentTimeMillis();
         long gameProsess;
-        ScoreControl sc = new ScoreControl();
+
 
         //Shit s = new Shit(SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f);
 
@@ -29,14 +29,13 @@ public class Main {
             gameProsess = System.currentTimeMillis();
 
             if(gameProsess - game >= (1000.0 / FPS)){
-                //gui.draw(gui.createImage());
+
             }
 
-            if(scoreProsess - score >= (3000.0)) {
-                score = scoreProsess;
-                ++COUNT;
-                sc.setScore(COUNT);
-                sc.scoreRender();
+            if(scoreProsess - score >= (5000.0)) {
+                COUNT++;
+                gui.setScore(COUNT);
+                gui.scoreRender();
             }
         }
     }
