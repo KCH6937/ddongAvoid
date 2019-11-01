@@ -1,4 +1,9 @@
 package com.kch;
+<<<<<<< HEAD
+=======
+// Main class
+
+>>>>>>> ac7b13f979422dea71451d73f406a829c60a1eef
 import com.kch.entity.Shit;
 import com.kch.storage.FileStorage;
 
@@ -12,7 +17,10 @@ public class Main {
 
     public static void main(String[] args) {
         FileStorage.load();
+<<<<<<< HEAD
 
+=======
+>>>>>>> ac7b13f979422dea71451d73f406a829c60a1eef
         Gui gui = new Gui();
 
         long score = System.currentTimeMillis();
@@ -24,6 +32,7 @@ public class Main {
 
         //Shit s = new Shit(SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f);
 
+<<<<<<< HEAD
         while(true){
             scoreProsess = System.currentTimeMillis();
             gameProsess = System.currentTimeMillis();
@@ -39,5 +48,7 @@ public class Main {
                 sc.scoreRender();
             }
         }
+=======
+>>>>>>> ac7b13f979422dea71451d73f406a829c60a1eef
     }
 }
