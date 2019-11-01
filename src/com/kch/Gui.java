@@ -78,7 +78,7 @@ public class Gui extends JFrame {
     public void shitPerSecFall() {
         for (int i = 0; i < 100; i++) {
             try {
-                shit.falling();
+                shit.falling();             // 추가링!!!!
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
