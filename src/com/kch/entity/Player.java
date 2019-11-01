@@ -32,17 +32,17 @@ public class Player implements DirectionKey, ImageProvider {
         this.status = status;
     }
 
+
+
     @Override
-
-    public void left() {setPosX(getPosX() - 1); }       //굿 b - 바로 호출 때림 -lsh-
-
     public void left() {setPosX(getPosX() - 5); }       //굿 b - lsh
 
 
+
+
+
     @Override
-    public void right() {
-        setPosX(getPosX() + 5);
-    }
+    public void right() { setPosX(getPosX() + 5); }
 
     public void deadStatus(boolean status) {    // 죽었을때 상태, 기능 추가하세욥
         setStatus(status);

@@ -27,7 +27,7 @@ public class Shit implements DirectionKey, ImageProvider {
     * 똥의 y값을 1 증가시키는 메소드임 개꿀><
     * */
     public void falling() {
-        posY = posY++;
+        posY = posY+ 50;
                                     //떨어지는 함수 위에서 1씩 증가시킴(0~~850)
     }                              //x y 그래프라고 생각하면 안됨! 왼쪽상단 모서리가  "0"
 

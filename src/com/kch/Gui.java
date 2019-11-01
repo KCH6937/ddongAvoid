@@ -1,6 +1,6 @@
 package com.kch;
 import com.kch.entity.Player;
-import com.kch.storage.FileStorage;
+import com.kch.entity.Shit;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,9 +14,13 @@ import java.awt.image.BufferedImage;
  * */
 //  gui 클래스
 public class Gui extends JFrame {
-    Graphics2D graphicDraw;     // Graphics2D 타입의 graphicDraw 메서드 선언합니다.
+    Graphics2D graphicDraw;     //
 
-    Player player = new Player(Main.SCREEN_WIDTH/2,810,0,0);    // 스피드, 가속도는 나중에 추가설정해주세요.
+
+    Shit shit = new Shit(Main.SCREEN_HEIGHT/2,650,0);       //확실x 건들지마셈
+
+     Player player = new Player(Main.SCREEN_WIDTH/2,810,0,0);    // 스피드, 가속도는 나중에 추가설정해주세요.
+
     public Gui() {
         setTitle("똥피하기");       //게임 이름
         setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);    //전체게임창을 설정
@@ -32,11 +36,14 @@ public class Gui extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {            //키보드를 눌렀을때
                 BufferedImage image = player.getImage();
+                BufferedImage imageD = shit.getImage();     //똥 이미지 가져오기
                 clear();        // 이전에 그린 사람의 이미지를 지워주는 함수입니다.
+
 
                 int x = player.getPosX(); // x는 현재 플레이어의 좌표값입니다.
                 int y = player.getPosY(); // y는 현재 플레이어의 좌표값입니다.
 
+                draw(imageD,350,50);       //똥 이미지 GUI 에 그려주기
                 switch (e.getKeyCode()) {
                     case 37:        // 키값이 37(Left 화살표)이면 왼쪽으로 좌표 이동한 후 draw() 함수로 그려줍니다.
                         player.left();  // -5 좌표만큼 이동해주는 메서드 호출입니다.
@@ -51,6 +58,8 @@ public class Gui extends JFrame {
 
             }
 
+
+
             @Override
             public void keyReleased(KeyEvent e) {           //키보드를 누르고있을때
                 System.out.println(e.getKeyCode());
@@ -64,6 +73,17 @@ public class Gui extends JFrame {
 
         public void clear() {       // 이전에 그렸던 그림을 지워주는 메서드입니다.
             graphicDraw.clearRect(player.getPosX(),player.getPosY(),32,32); //clearRect 설정한 좌표, 크기만큼 그림을 지워주는 함수
+    }
+
+    public void shitPerSecFall() {
+        for (int i = 0; i < 100; i++) {
+            try {
+                shit.falling();
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }
