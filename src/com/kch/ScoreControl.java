@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.kch;
 
 import javax.swing.*;
@@ -56,7 +55,7 @@ public class ScoreControl extends JFrame{
        repaint();       // awt 안에 구현되어있기 때문에 Frame을 상속받으면 바로 사용가능 -lsh-
     }
 }
-=======
+
 //package com.kch;
 //
 //import javax.swing.*;
@@ -115,4 +114,3 @@ public class ScoreControl extends JFrame{
 //       repaint();
 //    }
 //}
->>>>>>> a6773d99c25e835b55299db1416a6f5ac6989996
