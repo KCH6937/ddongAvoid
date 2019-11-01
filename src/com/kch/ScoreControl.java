@@ -5,7 +5,7 @@ import java.awt.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
-public class ScoreControl {
+public class ScoreControl extends JFrame{
     private int score;
     private Font font = new Font("돋움", Font.PLAIN, 30);
     private JFrame jf = new JFrame();
@@ -52,13 +52,7 @@ public class ScoreControl {
        JLabel jLabel = new JLabel("점수 : " + score);
        jLabel.setFont(font);
        jf.add(jLabel);
-       jf.pack();
        jf.setVisible(true);
-
-        JPanel jp = new JPanel();
-      
-    }
-
-    public void repaint(){
+       repaint();
     }
 }
