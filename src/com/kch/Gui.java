@@ -39,7 +39,6 @@ public class Gui extends JFrame {
                 BufferedImage imageD = shit.getImage();     //똥 이미지 가져오기
                 clear();        // 이전에 그린 사람의 이미지를 지워주는 함수입니다.
 
-
                 int x = player.getPosX(); // x는 현재 플레이어의 좌표값입니다.
                 int y = player.getPosY(); // y는 현재 플레이어의 좌표값입니다.
 
@@ -54,11 +53,7 @@ public class Gui extends JFrame {
                         draw(image, x, y);  // 그림 그려주는 메서드 호출입니다.
                         break;
                 }
-
-
             }
-
-
 
             @Override
             public void keyReleased(KeyEvent e) {           //키보드를 누르고있을때

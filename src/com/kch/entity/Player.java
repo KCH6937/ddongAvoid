@@ -3,8 +3,6 @@ package com.kch.entity;
 import com.kch.entity.abstractionInterface.DirectionKey;
 import com.kch.entity.abstractionInterface.ImageProvider;
 import com.kch.storage.FileStorage;
-
-import javax.swing.*;
 import java.awt.image.BufferedImage;
 
 // 플레이어(사람) 클래스
@@ -32,21 +30,11 @@ public class Player implements DirectionKey, ImageProvider {
         this.status = status;
     }
 
-
-
     @Override
     public void left() {setPosX(getPosX() - 5); }       //굿 b - lsh
 
-
-
-
-
-
     @Override
     public void right() { setPosX(getPosX() + 5); }
-
-
-
 
     public void deadStatus(boolean status) {    // 죽었을때 상태, 기능 추가하세욥
         setStatus(status);

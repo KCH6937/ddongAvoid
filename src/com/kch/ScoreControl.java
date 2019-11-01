@@ -10,7 +10,6 @@ public class ScoreControl extends JFrame{
     private Font font = new Font("돋움", Font.PLAIN, 30);
     private JFrame jf = new JFrame();
 
-
     public ScoreControl() {
         score = 0;
     }
@@ -53,6 +52,6 @@ public class ScoreControl extends JFrame{
        jLabel.setFont(font);
        jf.add(jLabel);
        jf.setVisible(true);
-       repaint();
+       repaint();       // awt 안에 구현되어있기 때문에 Frame을 상속받으면 바로 사용가능 -lsh-
     }
 }
