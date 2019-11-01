@@ -29,7 +29,7 @@ public class Main {
             gameProsess = System.currentTimeMillis();
 
             if(gameProsess - game >= (1000.0 / FPS)){
-                gui.draw(gui.createImage());
+                //gui.draw(gui.createImage());
             }
 
             if(scoreProsess - score >= (3000.0)) {
