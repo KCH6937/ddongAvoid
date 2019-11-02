@@ -11,9 +11,9 @@ import java.util.Map;
  * @author 이상훈
  * @since 2019-10-31
  * */
-//NDY가 협업할때 이렇게 하는거래 ㅋㅋ 알려줌 ㅈ간지 따라하지마셈
 
 public class FileStorage {
+
     public static Map <String, BufferedImage> bufferedImageMap;     //제네릭 - 타입을 적재장소에 맡게 넣음
     static {
         bufferedImageMap = new HashMap<>();     //자료구조 - 해쉬맵에 이미지 형태로 넣어야함
