@@ -6,6 +6,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 
 public class ScoreControl extends JFrame{
+
     private int score;
     private Font font = new Font("돋움", Font.PLAIN, 30);
     private JFrame jf = new JFrame();
