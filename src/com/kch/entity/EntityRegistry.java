@@ -20,7 +20,7 @@ public class EntityRegistry {   // 똥 불러오고, 플레이어 불러오고, 
     }
 
     public static void createShit() {
-        Shit shit = new Shit((int)Math.random() * Main.SCREEN_WIDTH, 0, (int)Math.random() * 20);
+        Shit shit = new Shit((int)Math.random() * Main.SCREEN_WIDTH, 0, (int)Math.random() * 20);   // 랜덤으로 똥을 생성
         shits.add(shit);
     }
 
