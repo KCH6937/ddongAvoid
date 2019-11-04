@@ -1,4 +1,5 @@
 package com.kch;
+import com.kch.entity.Shit;
 import com.kch.storage.FileStorage;
 
 public class Main {
@@ -12,7 +13,6 @@ public class Main {
         FileStorage.load();
 
         Gui gui = new Gui();
-
         long score = System.currentTimeMillis();
         long scoreProsess;
 
@@ -26,7 +26,7 @@ public class Main {
             scoreProsess = System.currentTimeMillis();
             gameProsess = System.currentTimeMillis();
 
-            if(gameProsess - game >= (1000.0 / FPS)){
+            if(gameProsess - game >= (10000.0 / FPS)){
 
             }
 

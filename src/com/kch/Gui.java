@@ -19,14 +19,12 @@ import java.io.FileWriter;
 //  gui 클래스
 public class Gui extends JFrame {
 
-    Graphics2D graphicDraw;     //
-
+    private Graphics2D graphicDraw;     //
     private int score = 0;
     private Font font = new Font("돋움", Font.PLAIN, 20);
-
-
-    Entity shit = new Shit(Main.SCREEN_HEIGHT/2,650,0);       //확실x 건들지마셈
-    Entity player = new Player(Main.SCREEN_WIDTH/2,810,0,0);    // 스피드, 가속도는 나중에 추가설정해주세요.
+    private JLabel jLabel = new JLabel("점수 : " + score);
+    private Entity shit = new Shit(Main.SCREEN_HEIGHT/2,0,0);       //확실x 건들지마셈
+    private Entity player = new Player(Main.SCREEN_WIDTH/2,810,0,0);    // 스피드, 가속도는 나중에 추가설정해주세요.
 
     public Gui() {
         setTitle("똥피하기");       //게임 이름
@@ -37,18 +35,26 @@ public class Gui extends JFrame {
         setLocationRelativeTo(null);      //실행했을때 게임창이 모니터의 중간에 뜨게 함
 
         graphicDraw = (Graphics2D) getGraphics();   // getGraphics() 메서드의 반환형이 그냥 Graphics 이므로 Graphics2D 타입으로 명시적형변환(캐스팅)입니다.
+        draw(player.getImage(), player.getPosX(), player.getPosY());
+        draw(shit.getImage(), shit.getPosX(), shit.getPosY());
+        repaint();
+
+//        jLabel.setFont(font);
+//        jLabel.setSize(10, 10);
+//        add(jLabel);
+
+        shitPerSecFall();
+
         this.addKeyListener(new KeyAdapter() {
 
             @Override
             public void keyPressed(KeyEvent e) {            //키보드를 눌렀을때
                 BufferedImage image = player.getImage();
-                BufferedImage imageD = shit.getImage();     //똥 이미지 가져오기
                 clear();        // 이전에 그린 사람의 이미지를 지워주는 함수입니다.
 
                 int x = player.getPosX(); // x는 현재 플레이어의 좌표값입니다.
                 int y = player.getPosY(); // y는 현재 플레이어의 좌표값입니다.
 
-                draw(imageD,350,50);       //똥 이미지 GUI 에 그려주기
                 switch (e.getKeyCode()) {
                     case 37:        // 키값이 37(Left 화살표)이면 왼쪽으로 좌표 이동한 후 draw() 함수로 그려줍니다.
                         player.controlX(-5);  // -5 좌표만큼 이동해주는 메서드 호출입니다.
@@ -72,19 +78,23 @@ public class Gui extends JFrame {
         graphicDraw.drawImage(image,x,y,null);
     }
 
-        public void clear() {       // 이전에 그렸던 그림을 지워주는 메서드입니다.
-            graphicDraw.clearRect(player.getPosX(),player.getPosY(),32,32); //clearRect 설정한 좌표, 크기만큼 그림을 지워주는 함수
+    public void clear() {       // 이전에 그렸던 그림을 지워주는 메서드입니다.
+        graphicDraw.clearRect(player.getPosX(),player.getPosY(),32,32); //clearRect 설정한 좌표, 크기만큼 그림을 지워주는 함수
     }
 
     public void shitPerSecFall() {
-        for (int i = 0; i < 100; i++) {
-            try {
-                ((Shit) shit).falling();             // 추가링!!!!
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        new Thread(() -> {
+            for (int i = 0; i < 840; i++) {
+                try {
+                    ((Shit) shit).falling();
+                    draw(shit.getImage(), shit.getPosX(), shit.getPosY());
+                    System.out.println(player.isCollision(shit));
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-        }
+        }).start();
     }
 
     public int getScore(){
@@ -120,11 +130,11 @@ public class Gui extends JFrame {
     }
 
     public void scoreRender(){
-        JLabel jLabel = new JLabel("점수 : " + score);
-        jLabel.setFont(font);
-        add(jLabel);
-        setVisible(true);
-        repaint();
+//        JLabel jLabel = new JLabel("점수 : " + score);
+//        jLabel.setFont(font);
+//        add(jLabel);
+//        setVisible(true);
+//        repaint();
     }
 
 }
