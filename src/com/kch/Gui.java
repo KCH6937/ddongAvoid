@@ -71,7 +71,7 @@ public class Gui extends JFrame {
     }
 
     public void clear() {       // 이전에 그렸던 그림을 지워주는 메서드입니다.
-        Player player = EntityRegistry.getPlayer();
+        Player player = EntityRegistry.getPlayer();     // 플레이어 EntityRegistry 클래스에 등록
         graphicDraw.clearRect(player.getPosX(),player.getPosY(),32,32); //clearRect 설정한 좌표, 크기만큼 그림을 지워주는 함수
     }
 
