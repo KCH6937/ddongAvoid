@@ -7,8 +7,7 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.*;
 
 /**
  * @author 이상훈(kebin0613@github.com)
@@ -34,6 +33,7 @@ public class Gui extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   //게임창을 종료했을때 프로그램 전체가 종료되게 함 (내부에서 안돌아가게하는거)
         setVisible(true);   //게임창이 정상적으로 출력하게 하는거
         setLocationRelativeTo(null);      //실행했을때 게임창이 모니터의 중간에 뜨게 함
+        setPreferredSize(new Dimension(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT));
 
         graphicDraw = (Graphics2D) getGraphics();   // getGraphics() 메서드의 반환형이 그냥 Graphics 이므로 Graphics2D 타입으로 명시적형변환(캐스팅)입니다.
 
@@ -120,15 +120,31 @@ public class Gui extends JFrame {
         }
     }
     public void fetchScore(){
+        try {
+            File file = new File("./Score.txt");
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
 
+            String line = "";
+
+            while((line = br.readLine()) != null){
+                System.out.println(line);
+            }
+
+            br.close();
+        }catch (Exception e){
+            e.getStackTrace();
+        }
     }
 
     public void scoreRender(){
-        JLabel jLabel = new JLabel("점수 : " + score);
+        JLabel jLabel = new JLabel("점수 : " + score, JLabel.LEFT);
+        JPanel jPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         jLabel.setFont(font);
-        add(jLabel);
-        setVisible(true);
-        repaint();
+        jLabel.setBounds(20, 20, 100, 100);
+        jPanel.add(jLabel);
+        add(jPanel);
+        pack();
     }
 
 }

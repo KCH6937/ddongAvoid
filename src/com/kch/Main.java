@@ -28,15 +28,17 @@ public class Main {
             scoreProsess = System.currentTimeMillis();
             gameProsess = System.currentTimeMillis();
 
+            if(scoreProsess - score >= (5000.0 / FPS)) {
+//                COUNT++;
+//                gui.setScore(COUNT);
+                gui.scoreRender();
+            }
+
             if(gameProsess - game >= (1000.0 / FPS)){
 
             }
 
-            if(scoreProsess - score >= (5000.0)) {
-                COUNT++;
-                gui.setScore(COUNT);
-                gui.scoreRender();
-            }
+
         }
     }
 }
