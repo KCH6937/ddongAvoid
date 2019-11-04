@@ -36,7 +36,7 @@ public abstract class Entity implements ImageProvider, PhysicsObject {
 
     @Override
     public boolean isCollision(Entity entity) {
-        Rectangle targetRectangle = new Rectangle(entity.getPosX(), entity.getPosY(), 32, 32);
+        Rectangle targetRectangle = new Rectangle(entity.getPosX(), entity.getPosY(), 8, 8);
         Rectangle rect = new Rectangle(getPosX(), getPosY(), 32, 32);
 
         return rect.intersects(targetRectangle);

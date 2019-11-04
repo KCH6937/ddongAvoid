@@ -9,8 +9,7 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.*;
 
 /**
  * @author 이상훈(kebin0613@github.com)
@@ -23,7 +22,7 @@ public class Gui extends JFrame {
     private Graphics2D graphicDraw;     //
     private int score = 0;
     private Font font = new Font("돋움", Font.PLAIN, 20);
-    private JLabel jLabel = new JLabel("점수 : " + score);
+    private JLabel jLabel = new JLabel("점수 : " + score, SwingConstants.LEFT);
 
     public Gui() {
         setTitle("똥피하기");       //게임 이름
@@ -32,6 +31,7 @@ public class Gui extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   //게임창을 종료했을때 프로그램 전체가 종료되게 함 (내부에서 안돌아가게하는거)
         setVisible(true);   //게임창이 정상적으로 출력하게 하는거
         setLocationRelativeTo(null);      //실행했을때 게임창이 모니터의 중간에 뜨게 함
+        setPreferredSize(new Dimension(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT));
 
         graphicDraw = (Graphics2D) getGraphics();   // getGraphics() 메서드의 반환형이 그냥 Graphics 이므로 Graphics2D 타입으로 명시적형변환(캐스팅)입니다.
 
@@ -49,11 +49,11 @@ public class Gui extends JFrame {
 
                 switch (e.getKeyCode()) {
                     case 37:        // 키값이 37(Left 화살표)이면 왼쪽으로 좌표 이동한 후 draw() 함수로 그려줍니다.
-                        player.controlX(-5);  // -5 좌표만큼 이동해주는 메서드 호출입니다.
+                        player.controlX(-10);  // -15 좌표만큼 이동해주는 메서드 호출입니다.
                         draw(image, x, y);  // 그림 그려주는 메서드 호출입니다.
                         break;
                     case 39:        // 키값이 39(Right 화살표)이면 오른쪽으로 좌표 이동한 후 draw() 함수로 그려줍니다.
-                        player.controlX(+5); // +5 좌표만큼 이동해주는 메서드 호출입니다.
+                        player.controlX(+10); // +15 좌표만큼 이동해주는 메서드 호출입니다.
                         draw(image, x, y);  // 그림 그려주는 메서드 호출입니다.
                         break;
                 }
@@ -104,15 +104,27 @@ public class Gui extends JFrame {
     }
 
     public void fetchScore(){
+        try {
+            File file = new File("./Score.txt");
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
 
+            String line = "";
+
+            while((line = br.readLine()) != null){
+                System.out.println(line);
+            }
+
+            br.close();
+        }catch (Exception e){
+            e.getStackTrace();
+        }
     }
 
     public void scoreRender(){
-//        JLabel jLabel = new JLabel("점수 : " + score);
-//        jLabel.setFont(font);
-//        add(jLabel);
-//        setVisible(true);
-//        repaint();
+        jLabel.setAlignmentX(10);
+        jLabel.setAlignmentY(10);
+        add(jLabel);
     }
 
 }
