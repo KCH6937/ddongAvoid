@@ -28,6 +28,8 @@ public class Shit extends Entity  {
     public synchronized void falling() {
         controlY((int) (+1 * speed));
 
+        System.out.println(speed);
+
         if(getPosY() > 850) {
             EntityRegistry.removeShit(this);
         }

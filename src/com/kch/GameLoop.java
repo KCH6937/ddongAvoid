@@ -27,7 +27,7 @@ public class GameLoop {
         shits.forEach(i -> i.falling());
         boolean success = false;
 
-        if (EntityRegistry.isCollision() == true){
+        if (EntityRegistry.isCollision()){
             success = false;
         }else{
             rendar();
