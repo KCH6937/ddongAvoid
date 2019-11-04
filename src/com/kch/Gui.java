@@ -1,4 +1,5 @@
 package com.kch;
+import com.kch.entity.EntityRegistry;
 import com.kch.entity.Player;
 import com.kch.entity.Shit;
 import com.kch.entity.abstractionInterface.Entity;
@@ -18,14 +19,10 @@ import java.io.*;
 //  gui 클래스
 public class Gui extends JFrame {
 
-    Graphics2D graphicDraw;     //
-
+    private Graphics2D graphicDraw;     //
     private int score = 0;
     private Font font = new Font("돋움", Font.PLAIN, 20);
-
-
-    Entity shit = new Shit(Main.SCREEN_HEIGHT/2,650,0);       //확실x 건들지마셈
-    Entity player = new Player(Main.SCREEN_WIDTH/2,810,0,0);    // 스피드, 가속도는 나중에 추가설정해주세요.
+    private JLabel jLabel = new JLabel("점수 : " + score);
 
     public Gui() {
         setTitle("똥피하기");       //게임 이름
@@ -37,18 +34,19 @@ public class Gui extends JFrame {
         setPreferredSize(new Dimension(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT));
 
         graphicDraw = (Graphics2D) getGraphics();   // getGraphics() 메서드의 반환형이 그냥 Graphics 이므로 Graphics2D 타입으로 명시적형변환(캐스팅)입니다.
+
         this.addKeyListener(new KeyAdapter() {
 
             @Override
-            public void keyPressed(KeyEvent e) {            //키보드를 눌렀을때
+            public void keyPressed(KeyEvent e) {
+                //키보드를 눌렀을때
+                Player player = EntityRegistry.getPlayer();
                 BufferedImage image = player.getImage();
-                BufferedImage imageD = shit.getImage();     //똥 이미지 가져오기
                 clear();        // 이전에 그린 사람의 이미지를 지워주는 함수입니다.
 
                 int x = player.getPosX(); // x는 현재 플레이어의 좌표값입니다.
                 int y = player.getPosY(); // y는 현재 플레이어의 좌표값입니다.
 
-                draw(imageD,350,50);       //똥 이미지 GUI 에 그려주기
                 switch (e.getKeyCode()) {
                     case 37:        // 키값이 37(Left 화살표)이면 왼쪽으로 좌표 이동한 후 draw() 함수로 그려줍니다.
                         player.controlX(-5);  // -5 좌표만큼 이동해주는 메서드 호출입니다.
@@ -72,19 +70,9 @@ public class Gui extends JFrame {
         graphicDraw.drawImage(image,x,y,null);
     }
 
-        public void clear() {       // 이전에 그렸던 그림을 지워주는 메서드입니다.
-            graphicDraw.clearRect(player.getPosX(),player.getPosY(),32,32); //clearRect 설정한 좌표, 크기만큼 그림을 지워주는 함수
-    }
-
-    public void shitPerSecFall() {
-        for (int i = 0; i < 100; i++) {
-            try {
-                ((Shit) shit).falling();             // 추가링!!!!
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+    public void clear() {       // 이전에 그렸던 그림을 지워주는 메서드입니다.
+        Player player = EntityRegistry.getPlayer();
+        graphicDraw.clearRect(player.getPosX(),player.getPosY(),32,32); //clearRect 설정한 좌표, 크기만큼 그림을 지워주는 함수
     }
 
     public int getScore(){
@@ -134,13 +122,7 @@ public class Gui extends JFrame {
     }
 
     public void scoreRender(){
-        JLabel jLabel = new JLabel("점수 : " + score, JLabel.LEFT);
-        JPanel jPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        jLabel.setFont(font);
-        jLabel.setBounds(20, 20, 100, 100);
-        jPanel.add(jLabel);
-        add(jPanel);
-        pack();
+
     }
 
 }

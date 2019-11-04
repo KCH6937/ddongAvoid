@@ -1,12 +1,14 @@
 package com.kch.entity.abstractionInterface;
 
+import java.awt.*;
+
 /**
  * @author 남대영
  * @since 2019 11 02
  *
  * Player, Shit의 부모 클래스
  * */
-public abstract class Entity implements ImageProvider {
+public abstract class Entity implements ImageProvider, PhysicsObject {
 
     private int posX, posY;
 
@@ -31,5 +33,14 @@ public abstract class Entity implements ImageProvider {
     public void controlY(int control) {
         this.posY += control;
     }
+
+    @Override
+    public boolean isCollision(Entity entity) {
+        Rectangle targetRectangle = new Rectangle(entity.getPosX(), entity.getPosY(), 32, 32);
+        Rectangle rect = new Rectangle(getPosX(), getPosY(), 32, 32);
+
+        return rect.intersects(targetRectangle);
+    }
+
 
 }

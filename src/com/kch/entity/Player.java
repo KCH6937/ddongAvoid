@@ -2,6 +2,8 @@ package com.kch.entity;
 
 import com.kch.entity.abstractionInterface.Entity;
 import com.kch.storage.FileStorage;
+
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 // 플레이어(사람) 클래스
