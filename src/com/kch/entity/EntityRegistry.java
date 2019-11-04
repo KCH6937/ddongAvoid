@@ -8,13 +8,13 @@ import java.util.Set;
 
 public class EntityRegistry {   // 똥 불러오고, 플레이어 불러오고, 똥 생성하고, 충돌체크
 
-<<<<<<< HEAD
+
     private static Set<Shit> shits = new HashSet<>();       //생성
     private static Player player;
-=======
+
     private static Set<Shit> shits = new HashSet<>();       // shit 클래스 타입의 변수를 저장할 HashSet
     private static Player player;                           // Player 타입 변수 하나 선언
->>>>>>> c74810975f9b38d7f24d4feb9810d7629a1f89c3
+
 
     public static void registerPlayer(Player player) {
         EntityRegistry.player = player;         // 플레이어 등록해주는 함수
