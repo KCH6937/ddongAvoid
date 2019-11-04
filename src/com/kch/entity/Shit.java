@@ -25,12 +25,21 @@ public class Shit extends Entity  {
     * x y 그래프라고 생각하면 안됨! 왼쪽상단 모서리가  "0"
     * 떨어지는 함수 위에서 1씩 증가시킴(0~~850)
     * */
-    public void falling() {
+    public synchronized void falling() {
         controlY((int) (+1 * speed));
+
+        if(getPosY() > 850) {
+            EntityRegistry.removeShit(this);
+        }
     }
 
     @Override
     public BufferedImage getImage() {                   //BufferedImage 가 리턴형 임 getImage 함수 호출
         return FileStorage.bufferedImageMap.get("똥");       //리턴값 FileStorage(파일저장소)의 똥이미지
+    }
+
+    @Override
+    public String toString() {
+        return "x:" + getPosX() + " y: " + getPosY();
     }
 }

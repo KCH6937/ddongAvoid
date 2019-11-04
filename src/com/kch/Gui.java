@@ -22,7 +22,7 @@ public class Gui extends JFrame {
     private Graphics2D graphicDraw;     //
     private int score = 0;
     private Font font = new Font("돋움", Font.PLAIN, 20);
-    private JLabel jLabel = new JLabel("점수 : " + score);
+    private JLabel jLabel = new JLabel("점수 : " + score, SwingConstants.LEFT);
 
     public Gui() {
         setTitle("똥피하기");       //게임 이름
@@ -49,11 +49,11 @@ public class Gui extends JFrame {
 
                 switch (e.getKeyCode()) {
                     case 37:        // 키값이 37(Left 화살표)이면 왼쪽으로 좌표 이동한 후 draw() 함수로 그려줍니다.
-                        player.controlX(-5);  // -5 좌표만큼 이동해주는 메서드 호출입니다.
+                        player.controlX(-10);  // -5 좌표만큼 이동해주는 메서드 호출입니다.
                         draw(image, x, y);  // 그림 그려주는 메서드 호출입니다.
                         break;
                     case 39:        // 키값이 39(Right 화살표)이면 오른쪽으로 좌표 이동한 후 draw() 함수로 그려줍니다.
-                        player.controlX(+5); // +5 좌표만큼 이동해주는 메서드 호출입니다.
+                        player.controlX(+10); // +5 좌표만큼 이동해주는 메서드 호출입니다.
                         draw(image, x, y);  // 그림 그려주는 메서드 호출입니다.
                         break;
                 }
@@ -122,7 +122,9 @@ public class Gui extends JFrame {
     }
 
     public void scoreRender(){
-
+        jLabel.setAlignmentX(10);
+        jLabel.setAlignmentY(10);
+        add(jLabel);
     }
 
 }

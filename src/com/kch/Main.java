@@ -10,12 +10,14 @@ public class Main {
     public static final int SCREEN_HEIGHT = 850;    //게임전체 높이 850 고정
     public static int COUNT = 0; //게임 점수
     final static int FPS = 15;
+    public static Gui gui;
 
     public static void main(String[] args) {
         FileStorage.load();
         EntityRegistry.registerPlayer(new Player(Main.SCREEN_WIDTH/2,810,0,0));
+        gui = new Gui();
+        GameLoop gameLoop = new GameLoop();
 
-        Gui gui = new Gui();
         long score = System.currentTimeMillis();
         long scoreProsess;
 
@@ -25,21 +27,15 @@ public class Main {
 
         //Shit s = new Shit(SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f);
 
-        while(true){
+        while(gameLoop.run()){
             scoreProsess = System.currentTimeMillis();
             gameProsess = System.currentTimeMillis();
 
-            if(scoreProsess - score >= (5000.0 / FPS)) {
-//                COUNT++;
-//                gui.setScore(COUNT);
-                gui.scoreRender();
-            }
-
-            if(gameProsess - game >= (1000.0 / FPS)){
-
-            }
+//            gameLoop.run();
 
 
         }
+
+        System.exit(0);
     }
 }
