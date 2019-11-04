@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class EntityRegistry {   // 똥 불러오고, 플레이어 불러오고, 똥 생성하고, 충돌체크
 
-    private static Set<Shit> shits = new HashSet<>();
+    private static Set<Shit> shits = new HashSet<>();       //생성
     private static Player player;
 
     public static void registerPlayer(Player player) {
