@@ -1,4 +1,5 @@
 package com.kch;
+import com.kch.entity.EntityRegistry;
 import com.kch.entity.Player;
 import com.kch.entity.Shit;
 import com.kch.entity.abstractionInterface.Entity;
@@ -23,8 +24,6 @@ public class Gui extends JFrame {
     private int score = 0;
     private Font font = new Font("돋움", Font.PLAIN, 20);
     private JLabel jLabel = new JLabel("점수 : " + score);
-    private Entity shit = new Shit(Main.SCREEN_HEIGHT/2,0,0);       //확실x 건들지마셈
-    private Entity player = new Player(Main.SCREEN_WIDTH/2,810,0,0);    // 스피드, 가속도는 나중에 추가설정해주세요.
 
     public Gui() {
         setTitle("똥피하기");       //게임 이름
@@ -35,20 +34,13 @@ public class Gui extends JFrame {
         setLocationRelativeTo(null);      //실행했을때 게임창이 모니터의 중간에 뜨게 함
 
         graphicDraw = (Graphics2D) getGraphics();   // getGraphics() 메서드의 반환형이 그냥 Graphics 이므로 Graphics2D 타입으로 명시적형변환(캐스팅)입니다.
-        draw(player.getImage(), player.getPosX(), player.getPosY());
-        draw(shit.getImage(), shit.getPosX(), shit.getPosY());
-        repaint();
-
-//        jLabel.setFont(font);
-//        jLabel.setSize(10, 10);
-//        add(jLabel);
-
-        shitPerSecFall();
 
         this.addKeyListener(new KeyAdapter() {
 
             @Override
-            public void keyPressed(KeyEvent e) {            //키보드를 눌렀을때
+            public void keyPressed(KeyEvent e) {
+                //키보드를 눌렀을때
+                Player player = EntityRegistry.getPlayer();
                 BufferedImage image = player.getImage();
                 clear();        // 이전에 그린 사람의 이미지를 지워주는 함수입니다.
 
@@ -79,22 +71,8 @@ public class Gui extends JFrame {
     }
 
     public void clear() {       // 이전에 그렸던 그림을 지워주는 메서드입니다.
+        Player player = EntityRegistry.getPlayer();
         graphicDraw.clearRect(player.getPosX(),player.getPosY(),32,32); //clearRect 설정한 좌표, 크기만큼 그림을 지워주는 함수
-    }
-
-    public void shitPerSecFall() {
-        new Thread(() -> {
-            for (int i = 0; i < 840; i++) {
-                try {
-                    ((Shit) shit).falling();
-                    draw(shit.getImage(), shit.getPosX(), shit.getPosY());
-                    System.out.println(player.isCollision(shit));
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
     }
 
     public int getScore(){

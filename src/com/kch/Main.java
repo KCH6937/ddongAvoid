@@ -1,4 +1,6 @@
 package com.kch;
+import com.kch.entity.EntityRegistry;
+import com.kch.entity.Player;
 import com.kch.entity.Shit;
 import com.kch.storage.FileStorage;
 
@@ -11,6 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
         FileStorage.load();
+        EntityRegistry.registerPlayer(new Player(Main.SCREEN_WIDTH/2,810,0,0));
 
         Gui gui = new Gui();
         long score = System.currentTimeMillis();

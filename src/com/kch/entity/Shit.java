@@ -26,7 +26,7 @@ public class Shit extends Entity  {
     * 떨어지는 함수 위에서 1씩 증가시킴(0~~850)
     * */
     public void falling() {
-        controlY(+1);
+        controlY((int) (+1 * speed));
     }
 
     @Override
